@@ -6,7 +6,7 @@ describe('StormGlass client',  () => {
         const lng = 151.289824;
 
         const stormGlass = new StormGlass();
-        const response = await StormGlass.fetchPoints(lat, lng);
+        const response = await stormGlass.fetchPoints(lat, lng);
         expect(response).toEqual({});
 
     });
