@@ -47,3 +47,5 @@ describe('StormGlass client',  () => {
             const stormGlass = new StormGlass()
         })
 });
+
+//module storm glass
