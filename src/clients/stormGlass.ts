@@ -28,6 +28,7 @@ export interface ForecastPoint{
     windDirection: number;
     windSpeed: number;
 }
+
 export class StormGlass {
     readonly stormGlassAPIParams =
      'swellDirection,swellHeight,swellPeriod,waveDirection,waveHeight,windDirection,windSpeed';
@@ -45,7 +46,11 @@ export class StormGlass {
             );      
     
             return this.normalizeResponse(response.data);
-        }
+            catch(err){
+                throw new Error(`Unexpected error when trying to communicate to StormGlass: ${err.message}`);
+            }
+    }
+        
     private normalizeResponse(points: StormGlassForecastResponse
         ): ForecastPoint[] {
             return points.hours.filter(this.isValidPoint.bind(this))
@@ -75,5 +80,4 @@ export class StormGlass {
         }
 }
 // alteração pra commit
-
 
